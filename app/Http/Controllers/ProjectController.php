@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectCreateDto;
 use Illuminate\Http\Request;
 use App\Repositories\ProjectInterface;
 use App\Repositories\ProjectRepository;
@@ -30,9 +31,10 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProjectCreateDto $request)
     {
-        return $this->projectRepository->create($request->all());
+        $validated = $request->validated();
+        return $this->projectRepository->create($validated);
     }
 
     /**

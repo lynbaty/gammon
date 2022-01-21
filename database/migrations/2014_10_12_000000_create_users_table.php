@@ -19,11 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('avatar')->nullable();
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('address');
-            $table->string('phone');
-            $table->enum('status', ['active', 'inactive']);
+            $table->string('firstname')->default('');
+            $table->string('lastname')->default('');
+            $table->string('address')->default('');
+            $table->string('phone')->default('');
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }
